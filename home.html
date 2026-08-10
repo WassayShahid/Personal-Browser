@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gnoiss Browser</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="home-shell">
+        <h1>Gnoiss</h1>
+        <p>Your lightweight browser with a polished look and modern navigation.</p>
+        <div class="home-search">
+            <input id="searchInput" type="text" placeholder="Search the web or enter a URL" />
+            <button id="searchButton">Search</button>
+        </div>
+        <div class="quick-links">
+            <a href="https://www.google.com">Google</a>
+            <a href="https://www.github.com">GitHub</a>
+            <a href="https://www.youtube.com">YouTube</a>
+            <a href="https://www.stackoverflow.com">Stack Overflow</a>
+        </div>
+    </div>
+    <script>
+        const input = document.getElementById('searchInput');
+        const button = document.getElementById('searchButton');
+
+        function openSearch() {
+            const query = input.value.trim();
+            if (!query) return;
+            const url = query.includes('.') ? `https://${query}` : `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            window.location.href = url;
+        }
+
+        button.addEventListener('click', openSearch);
+        input.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                openSearch();
+            }
+        });
+    </script>
+</body>
+</html>

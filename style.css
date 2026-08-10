@@ -1,0 +1,208 @@
+QMainWindow {
+    background: #F0F5FF;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+QToolBar {
+    background: #FFFFFF;
+    spacing: 10px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #D7E0F2;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+QToolBar QToolButton {
+    min-width: 40px;
+    min-height: 40px;
+    border: none;
+    border-radius: 12px;
+    padding: 8px;
+    background: transparent;
+    color: #334155;
+}
+
+QToolBar QToolButton:hover {
+    background: #EEF4FF;
+}
+
+QLineEdit {
+    border: 1px solid #CBD5E7;
+    border-radius: 16px;
+    padding: 10px 14px;
+    background: #F9FBFF;
+    color: #0F172A;
+}
+
+QLineEdit:focus {
+    border-color: #3B82F6;
+    background: #FFFFFF;
+}
+
+QTabWidget::pane {
+    border: 1px solid #D4E0F0;
+    border-radius: 16px;
+    background: #FFFFFF;
+    margin-top: -1px;
+}
+
+QTabBar::tab {
+    background: #F6F9FF;
+    border: 1px solid #D7E1F4;
+    border-bottom: none;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding: 10px 18px;
+    margin-right: 6px;
+    color: #334155;
+}
+
+QTabBar::tab:selected {
+    background: #FFFFFF;
+    color: #0F172A;
+    margin-top: 0px;
+}
+
+QTabBar::tab:hover {
+    background: #E9F0FF;
+}
+
+QTabBar::close-button {
+    subcontrol-origin: padding;
+    subcontrol-position: right center;
+    width: 16px;
+    height: 16px;
+    margin: 0 4px 0 0;
+}
+
+QTabBar::close-button:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+}
+
+QStatusBar {
+    background: #FFFFFF;
+    color: #475569;
+    padding: 8px 14px;
+    border-top: 1px solid #E2E8F0;
+}
+
+QMenuBar {
+    background: #FFFFFF;
+    color: #334155;
+}
+
+QMenuBar::item:selected {
+    background: #EEF4FF;
+}
+
+QMenu {
+    background: #FFFFFF;
+    color: #334155;
+    border: 1px solid #D7E1F4;
+}
+
+QMenu::item:selected {
+    background: #EEF4FF;
+}
+
+QProgressBar {
+    border: 1px solid #D7E1F4;
+    border-radius: 8px;
+    background: #EEF4FF;
+    height: 12px;
+}
+
+QProgressBar::chunk {
+    background: #3B82F6;
+    border-radius: 8px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #F0F5FF;
+    color: #0F172A;
+}
+
+.home-shell {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 110px 24px;
+    text-align: center;
+}
+
+.home-shell h1 {
+    font-size: 3.6rem;
+    margin-bottom: 10px;
+    color: #102A43;
+}
+
+.home-shell p {
+    font-size: 1.15rem;
+    color: #475569;
+    margin-bottom: 36px;
+    line-height: 1.7;
+}
+
+.home-search {
+    display: inline-flex;
+    width: 100%;
+    max-width: 680px;
+    border: 1px solid #D7E1F4;
+    border-radius: 999px;
+    background: #FFFFFF;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+.home-search input {
+    flex: 1;
+    border: none;
+    padding: 16px 20px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.home-search button {
+    border: none;
+    padding: 16px 26px;
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.home-search button:hover {
+    transform: translateY(-1px);
+    opacity: 0.98;
+}
+
+.quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    justify-items: center;
+    margin-top: 42px;
+}
+
+.quick-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 20px;
+    width: 100%;
+    border-radius: 16px;
+    background: #FFFFFF;
+    color: #334155;
+    text-decoration: none;
+    border: 1px solid #D7E1F4;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.quick-links a:hover {
+    background: #F8FAFF;
+    border-color: #B7D2FF;
+    transform: translateY(-2px);
+}
