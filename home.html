@@ -3,41 +3,66 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gnoiss Browser</title>
+    <title>New tab</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="home-shell">
+        <div class="clock" id="clock"></div>
         <h1>Gnoiss</h1>
-        <p>Your lightweight browser with a polished look and modern navigation.</p>
+        <p>Search the web, jump into a site, or pick up where you left off.</p>
         <div class="home-search">
-            <input id="searchInput" type="text" placeholder="Search the web or enter a URL" />
+            <input id="searchInput" type="text" placeholder="Search or type a web address" autofocus />
             <button id="searchButton">Search</button>
         </div>
         <div class="quick-links">
-            <a href="https://www.google.com">Google</a>
-            <a href="https://www.github.com">GitHub</a>
-            <a href="https://www.youtube.com">YouTube</a>
-            <a href="https://www.stackoverflow.com">Stack Overflow</a>
+            <a href="https://www.google.com"><span class="tile-letter">G</span>Google</a>
+            <a href="https://github.com"><span class="tile-letter">GH</span>GitHub</a>
+            <a href="https://www.youtube.com"><span class="tile-letter">YT</span>YouTube</a>
+            <a href="https://stackoverflow.com"><span class="tile-letter">SO</span>Stack Overflow</a>
         </div>
     </div>
     <script>
-        const input = document.getElementById('searchInput');
-        const button = document.getElementById('searchButton');
+        const input = document.getElementById("searchInput");
+        const button = document.getElementById("searchButton");
+        const clock = document.getElementById("clock");
+
+        function looksLikeUrl(text) {
+            if (/^(https?:|file:|about:)/i.test(text)) return true;
+            if (text.includes(" ")) return false;
+            if (/^localhost(:\d+)?(\/|$)/i.test(text)) return true;
+            if (/^\d{1,3}(\.\d{1,3}){3}(:\d+)?/.test(text)) return true;
+            return text.includes(".") && !text.endsWith(".");
+        }
 
         function openSearch() {
             const query = input.value.trim();
             if (!query) return;
-            const url = query.includes('.') ? `https://${query}` : `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-            window.location.href = url;
+            if (/^(https?:|file:|about:)/i.test(query)) {
+                window.location.href = query;
+                return;
+            }
+            window.location.href = looksLikeUrl(query)
+                ? `https://${query}`
+                : `https://www.google.com/search?q=${encodeURIComponent(query)}`;
         }
 
-        button.addEventListener('click', openSearch);
-        input.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                openSearch();
-            }
+        function tick() {
+            const now = new Date();
+            clock.textContent = now.toLocaleString(undefined, {
+                weekday: "long",
+                hour: "numeric",
+                minute: "2-digit",
+            });
+        }
+
+        button.addEventListener("click", openSearch);
+        input.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") openSearch();
         });
+        tick();
+        setInterval(tick, 1000);
+        input.focus();
     </script>
 </body>
 </html>
